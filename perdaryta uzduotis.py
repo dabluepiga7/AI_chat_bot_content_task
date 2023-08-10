@@ -2,6 +2,8 @@ import whois
 import requests
 import json
 
+# this fuction is getting the domain's expiration date and creation date if it exists, if not, it returns None for both Expiration adn Creation dates
+
 def domains_info_whois(domain):
     try:
         who = whois.whois(domain)
@@ -9,6 +11,7 @@ def domains_info_whois(domain):
     except Exception as no:
         return None, None
     
+# this fuction is getting the website's status code by using requests API 
 def websites_status_code(domain):
     try:
         response = requests.get(f"http://{domain}")
@@ -16,6 +19,7 @@ def websites_status_code(domain):
     except requests.RequestException:
         return None
     
+# this fuctions, is connectting to AbuseIPDB, but it also is getting whether this information is public or not, how many reports they have gotten and if the website is safe or not
 def check_domain_abuse_report(domain):
     try:
         api = "9d7b7f27a89dd85fe444e0cb67984eeec3811c14fc11d9cf127d3bd73996bb5d2b56930e6877dfc2"
@@ -37,9 +41,12 @@ def check_domain_abuse_report(domain):
     except Exception as no:
         return None, False, None
     
+# this is the main fuction so that all of the main commands could work without any issues.
+    
 def main():
     domain = input("Enter the domain URL: ")
     
+
     creation_date, expiration_date = domains_info_whois(domain)
     
     if creation_date and expiration_date:
@@ -63,8 +70,11 @@ def main():
     else:
         print("no info :( ")
         
+
 if __name__ == "__main__":
     main()
     
+    
+
     
     

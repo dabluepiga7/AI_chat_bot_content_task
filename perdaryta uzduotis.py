@@ -22,7 +22,7 @@ def websites_status_code(domain):
 # this fuctions, is connectting to AbuseIPDB, but it also is getting whether this information is public or not, how many reports they have gotten and if the website is safe or not
 def check_domain_abuse_report(domain):
     try:
-        api = "9d7b7f27a89dd85fe444e0cb67984eeec3811c14fc11d9cf127d3bd73996bb5d2b56930e6877dfc2"
+        api = "INSERT_KEY_HERE"
         report = requests.get(f"https://api.abuseipdb.com/api/v2/check?domain={domain}",
                               headers={"Key": api})
         data = report.json()
